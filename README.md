@@ -1,10 +1,12 @@
-# Signal
+# terraform-aws-web-stack
 
 A small AWS web stack managed entirely with Terraform. It builds a VPC with two public subnets, puts two EC2 web servers running httpd in them, and fronts them with an application load balancer. Route53 DNS is optional.
 
 I built this as the hands-on project for the HashiCorp Certified: Terraform Associate (003) prep course, to get the core workflow (write, plan, apply, destroy) into muscle memory on real AWS resources.
 
 ## Architecture
+
+![Signal architecture](docs/architecture.png)
 
 ```
                     ┌─────────────┐
