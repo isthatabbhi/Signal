@@ -1,4 +1,4 @@
-# terraform-aws-web-stack
+# Signal
 
 A small AWS web stack managed entirely with Terraform. It builds a VPC with two public subnets, puts two EC2 web servers running httpd in them, and fronts them with an application load balancer. Route53 DNS is optional.
 
