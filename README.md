@@ -1,25 +1,12 @@
-# terraform-aws-web-stack
+# Signal
 
-A small AWS web stack managed entirely with Terraform. It builds a VPC with two public subnets, puts two EC2 web servers running httpd in them, and fronts them with an application load balancer. Route53 DNS is optional.
+A small AWS web stack managed entirely with Terraform. It builds a VPC with two public subnets, puts two EC2 web servers in them, and fronts them with an application load balancer. Each server renders a live status page (IST date and time, uptime, load, memory, disk). Route53 DNS is optional.
 
 I built this as the hands-on project for the HashiCorp Certified: Terraform Associate (003) prep course, to get the core workflow (write, plan, apply, destroy) into muscle memory on real AWS resources.
 
 ## Architecture
 
 ![Signal architecture](docs/architecture.png)
-
-```
-                    ┌─────────────┐
-  Route53 (optional)│     ALB     │─── target group ───┐
-  alias record      └─────────────┘                    │
-                                                      ▼
-              ┌────────────────────────┐    ┌─────────────────┐
-              │  public subnet (AZ a)  │    │ public subnet   │
-              │  EC2 web-1 (httpd)     │    │ (AZ b)          │
-              └────────────────────────┘    │ EC2 web-2 (httpd│
-                                            └─────────────────┘
-                        VPC 10.0.0.0/16 + internet gateway
-```
 
 Security groups: the ALB accepts HTTP from anywhere, the web servers accept HTTP only from the ALB and SSH only from the CIDR you configure.
 
@@ -62,7 +49,7 @@ terraform destroy
 | `variables.tf` | Input variables |
 | `network.tf` | VPC, subnets, internet gateway, route table |
 | `security.tf` | Security groups for the ALB and web servers |
-| `compute.tf` | EC2 instances with httpd installed via user data |
+| `compute.tf` | EC2 instances serving a live system status page via user data |
 | `alb.tf` | Application load balancer, target group, listener |
 | `dns.tf` | Optional Route53 alias record |
 | `outputs.tf` | ALB DNS name, instance IDs, VPC ID, site URL |
