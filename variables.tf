@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "project_name" {
   description = "Name prefix for all resources"
   type        = string
-  default     = "web-stack"
+  default     = "signal"
 }
 
 variable "vpc_cidr" {

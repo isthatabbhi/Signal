@@ -1,5 +1,5 @@
 aws_region       = "ap-south-1"
-project_name     = "web-stack"
+project_name     = "signal"
 instance_type    = "t3.micro"
 key_name         = "my-keypair"
 allowed_ssh_cidr = "203.0.113.10/32"
