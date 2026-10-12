@@ -6,7 +6,9 @@ I built this as the hands-on project for the HashiCorp Certified: Terraform Asso
 
 ## Architecture
 
-![Signal architecture](docs/architecture.png)
+<p align="center">
+  <img src="docs/architecture.png" alt="Signal architecture" width="650">
+</p>
 
 Security groups: the ALB accepts HTTP from anywhere, the web servers accept HTTP only from the ALB and SSH only from the CIDR you configure.
 
